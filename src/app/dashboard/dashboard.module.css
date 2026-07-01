@@ -1,0 +1,274 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.25rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.date {
+  color: var(--foreground-muted);
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  margin-top: 0.25rem;
+}
+
+.downloadBtn {
+  background: var(--surface);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.downloadBtn:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.downloadBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.balanceCard {
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-card);
+  box-shadow: var(--shadow-md);
+}
+
+.balanceCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.cardHeader {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  z-index: 1;
+}
+
+.balance {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 1rem 0;
+  letter-spacing: -0.05em;
+  z-index: 1;
+}
+
+.cardFooter {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+}
+
+.statusActive {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.statusOther {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.actionCard {
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease;
+}
+
+.actionCard:hover {
+  transform: translateY(-4px);
+}
+
+.actionIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.actionTitle {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.actionDesc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.actionBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background: var(--primary);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.viewAll {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.transactionsBox {
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  min-height: 200px;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+}
+
+.txList {
+  display: flex;
+  flex-direction: column;
+}
+
+.txItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.txItem:last-child {
+  border-bottom: none;
+}
+
+.txIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  color: var(--foreground);
+}
+
+.txDetails {
+  flex: 1;
+}
+
+.txType {
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+  text-transform: capitalize;
+}
+
+.txDate {
+  font-size: 0.85rem;
+  color: var(--foreground-muted);
+}
+
+.txAmount {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.positive {
+  color: var(--success);
+}
+
+.negative {
+  color: var(--foreground);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--foreground-muted);
+  font-size: 0.95rem;
+  padding: 2rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

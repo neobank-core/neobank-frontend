@@ -1,0 +1,433 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.4s ease-out;
+  max-width: 1200px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.addBtn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+.addBtn:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.addBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  height: 220px;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 1px;
+}
+
+.chip {
+  width: 40px;
+  height: 28px;
+  background: linear-gradient(135deg, #ffd700, #daa520);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  right: -10%;
+  height: 1px;
+  background: rgba(0,0,0,0.2);
+}
+
+.cardNumber {
+  font-size: 1.5rem;
+  font-family: monospace;
+  letter-spacing: 3px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cardHolder, .cardStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+.cardFooter span:not(.label) {
+  font-size: 0.875rem;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.statusACTIVE { color: var(--success) !important; }
+.statusPENDING_VERIFICATION { color: var(--warning) !important; }
+.statusBLOCKED { color: var(--danger) !important; }
+
+.cardBLOCKED {
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+
+.pendingAction {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.7);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  backdrop-filter: blur(4px);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .pendingAction {
+  transform: translateY(0);
+}
+
+.warningText {
+  font-size: 0.75rem;
+  color: var(--warning);
+  text-align: center;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem;
+  background: var(--surface);
+  border: 1px dashed var(--surface-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  opacity: 0.5;
+}
+
+.emptyState h3 {
+  font-size: 1.5rem;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.emptyState p {
+  color: var(--foreground-muted);
+  max-width: 400px;
+  margin: 0;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal, .detailsModal {
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: slideUp 0.3s ease-out;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+}
+
+.detailsModal {
+  max-width: 500px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--foreground-muted);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground-muted);
+}
+
+.inputField {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.inputField:focus {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--foreground-muted);
+  margin: 0;
+}
+
+.cardDetailView {
+  height: 240px;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--gradient-card);
+  box-shadow: var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detailItem label {
+  font-size: 0.75rem;
+  color: var(--foreground-muted);
+  text-transform: uppercase;
+}
+
+.dangerBtn {
+  flex: 1;
+  padding: 0.875rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  color: var(--danger);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dangerBtn:hover:not(:disabled) {
+  background: rgba(255, 77, 77, 0.2);
+}
+
+.dangerBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.otpInput {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5rem;
+  outline: none;
+}
+
+.otpInput:focus {
+  border-color: var(--primary);
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.cancelBtn {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.confirmBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.errorBanner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.cancelRequestBtn {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--danger);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cancelRequestBtn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}

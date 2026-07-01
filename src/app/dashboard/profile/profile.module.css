@@ -1,0 +1,408 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.kycStatusWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--surface-border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--surface-border);
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.editIconBtn {
+  background: transparent;
+  border: none;
+  color: var(--foreground-muted);
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.editIconBtn:hover {
+  color: var(--foreground);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground-muted);
+}
+
+.fieldValue {
+  font-size: 1rem;
+  color: var(--foreground);
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
+.inputField, .selectField {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-border);
+  background: var(--surface-input);
+  color: var(--foreground);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.inputField:focus, .selectField:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.selectField option {
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.editActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.saveBtn, .cancelBtn, .verifyBtn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.saveBtn {
+  background: var(--primary);
+  color: white;
+}
+
+.saveBtn:hover:not(:disabled) {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.saveBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--surface-border);
+}
+
+.cancelBtn:hover {
+  background: var(--surface-hover);
+}
+
+.verifyBtn {
+  background: var(--gradient-card);
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.verifyBtn:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-approved { background: rgba(0, 230, 118, 0.15); color: var(--success); }
+.badge-pending { background: rgba(255, 159, 10, 0.15); color: var(--warning); }
+.badge-rejected { background: rgba(255, 77, 77, 0.15); color: var(--danger); }
+.badge-not_submitted { background: rgba(160, 160, 192, 0.15); color: var(--foreground-muted); }
+/* camelCase aliases for CSS module bracket access */
+.badgeApproved { background: rgba(0, 230, 118, 0.15); color: var(--success); }
+.badgePending { background: rgba(255, 159, 10, 0.15); color: var(--warning); }
+.badgeRejected { background: rgba(255, 77, 77, 0.15); color: var(--danger); }
+.badgeNot_submitted { background: rgba(160, 160, 192, 0.15); color: var(--foreground-muted); }
+
+/* Preferences Group */
+.prefGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.switchLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.switchText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.switchText strong {
+  font-size: 1rem;
+  color: var(--foreground);
+}
+
+.switchText span {
+  font-size: 0.85rem;
+  color: var(--foreground-muted);
+}
+
+/* Custom Toggle */
+.toggle {
+  appearance: none;
+  width: 50px;
+  height: 26px;
+  background: var(--surface-border);
+  border-radius: 13px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: var(--foreground-muted);
+  border-radius: 50%;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px var(--primary-light);
+}
+
+.toggle:checked {
+  background: var(--primary);
+}
+
+.toggle:checked::after {
+  transform: translateX(24px);
+  background: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.inputField {
+  background: var(--surface-input);
+  border: 1px solid var(--surface-border);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--foreground);
+  font-size: 0.9rem;
+  outline: none;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.inputField:focus {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.editRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.saveBtn {
+  flex: 1;
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saveBtn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.cancelBtn {
+  flex: 1;
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--surface-border);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelBtn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.05);
+}
+
+.editBtn {
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.editBtn:hover {
+  background: var(--primary-light);
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.kycModal {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: rgba(20, 20, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--foreground-muted);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modalDesc {
+  color: var(--foreground-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+

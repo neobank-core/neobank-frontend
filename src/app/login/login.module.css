@@ -1,0 +1,170 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.loginBox {
+  width: 100%;
+  max-width: 460px;
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.loginBox::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, var(--surface-hover) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--foreground);
+  text-align: center;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--foreground);
+  z-index: 1;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--foreground);
+  opacity: 0.6;
+  font-size: 0.95rem;
+  z-index: 1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  z-index: 1;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--foreground);
+  opacity: 0.8;
+  letter-spacing: 0.02em;
+}
+
+.inputGroup input {
+  width: 100%;
+  background: var(--surface-input);
+  border: 1px solid var(--surface-border);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.inputGroup input::placeholder {
+  color: var(--foreground);
+  opacity: 0.3;
+}
+
+.inputGroup input:focus {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 15px var(--primary-light);
+}
+
+.button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error {
+  background: rgba(255, 69, 58, 0.15);
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  color: var(--danger);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  opacity: 0.7;
+  margin-top: 1rem;
+}
+
+.footer a {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: var(--foreground);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
